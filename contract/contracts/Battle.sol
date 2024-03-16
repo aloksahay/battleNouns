@@ -4,6 +4,8 @@ pragma solidity ^0.8.24;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 contract Battle {
     
     // Two competitive teams
@@ -20,7 +22,7 @@ contract Battle {
     // Steps of the user
     mapping (address => uint) steps;
     mapping (address => uint) amount;
-    mapping (address => bool) supports;
+    mapping (address => bool) support;
 
     // Owner of the contract
     address owner;
@@ -37,26 +39,26 @@ contract Battle {
         owner = msg.sender;
     }
 
-    function participate(address supportiveTeam, uint amount) external {
-        require(amount > 0);  // Need to have some token
+    function participate(address supportiveTeam, uint256 user_amount) external {
+        require(user_amount > 0);  // Need to have some token
         require(steps[msg.sender] == 0);  // Have not already participate
         require(supportiveTeam == team1 || supportiveTeam == team2);  // Valid team
 
         // Transfer user token to the smart contract
         IERC20 token = IERC20(supportiveTeam);
-        require(token.transferFrom(msg.sender, address(this), amount), "Token transfer failed");
+        require(token.transferFrom(msg.sender, address(this), user_amount), "Token transfer failed");
         
         // Increase the point to the respective teams
         if (supportiveTeam == team1) {
             points1 += 100;
-            supports[msg.sender] = 0;
+            support[msg.sender] = false;
         } else {
             points2 += 100;
-            supports[msg.sender] = 1;
+            support[msg.sender] = true;
         }
 
         // Initialize the amount & the steps
-        amount[msg.sender] = amount;
+        amount[msg.sender] = user_amount;
         steps[msg.sender] = 1;
     }
 
@@ -68,7 +70,7 @@ contract Battle {
         steps[user]++;
 
         // Attribute some points to the team
-        if (!supports[msg.sender]) {
+        if (!support[msg.sender]) {
             points1 += 100;
         } else {
             points2 += 100;
