@@ -14,7 +14,10 @@ const { ethers } = require('ethers');
 
 const contractInfo = require("../contract/artifacts/contracts/Battle.sol/Battle.json") 
 
+const ERC20_ABI = require("./data/erc_20_abi.json");
 
+
+let provider = new ethers.JsonRpcProvider("https://spicy-rpc.chiliz.com/");
 
 // // const factory = new ContractFactory(contractAbi, contractByteCode);
 
@@ -60,6 +63,24 @@ const contractInfo = require("../contract/artifacts/contracts/Battle.sol/Battle.
 //     }
 // }
 
+
+async function get_team_name_from_address(team_address) {
+        
+    // From the ABI get the name of the team
+    let erc_20_contract = new ethers.Contract(
+        team_address,
+        ERC20_ABI,
+        provider
+    );
+
+    return await erc_20_contract.name();
+}
+
+
+
+const PSG_ADDRESS = "0xa4bf4104ec0109591077Ee5F4a2bFD13dEE1Bdf8";
+const BAR_ADDRESS = "0x63667746A7A005E45B1fffb13a78d0331065Ff7f";
+
 // Deploy route
 app.get('/deploy', async (req, res) => {
 
@@ -79,8 +100,8 @@ app.get('/deploy', async (req, res) => {
 
         // If your contract requires constructor args, you can specify them here
         const contract = await factory.deploy(
-            "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-            "0xAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+            PSG_ADDRESS,
+            BAR_ADDRESS,
             100
         );
 
@@ -90,6 +111,50 @@ app.get('/deploy', async (req, res) => {
         res.status(500).send('Error deploying contract: ' + error.message);
     }
 });
+
+
+// First API: get fan tokens for player1
+// Second: upgradeLevel
+// Third: levelComplete -> Airdrop fan tokens to winner
+
+
+app.get('/fan-player-1', async (req, res) => {
+
+    let contract = new ethers.Contract(
+        "0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190",
+        contractInfo.abi,
+        provider
+    );
+
+    // Get the team ERC20 address
+    const team_1_address = await contract.team1();
+    
+    const team_name = await get_team_name_from_address(team_1_address);
+
+    res.send(team_name);
+});
+
+app.get('/fan-player-2', async (req, res) => {
+
+    let contract = new ethers.Contract(
+        "0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190",
+        contractInfo.abi,
+        provider
+    );
+
+    // Get the team ERC20 address
+    const team_2_address = await contract.team2();
+    
+    const team_name = await get_team_name_from_address(team_2_address);
+
+    res.send(team_name);
+});
+
+// app.get('/next', async (req, res) => {
+
+//     req
+
+// }
 
 // Start the server
 app.listen(port, () => {
