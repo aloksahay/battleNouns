@@ -20,6 +20,10 @@ contract Battle {
     // Steps of the user
     mapping (address => uint) steps;
     mapping (address => uint) amount;
+    mapping (address => bool) supports;
+
+    // Owner of the contract
+    address owner;
 
     constructor(
         address _team1,
@@ -29,6 +33,8 @@ contract Battle {
         team1 = _team1;
         team2 = _team2;
         deadline = block.timestamp + duration;
+
+        owner = msg.sender;
     }
 
     function participate(address supportiveTeam, uint amount) external {
@@ -43,8 +49,10 @@ contract Battle {
         // Increase the point to the respective teams
         if (supportiveTeam == team1) {
             points1 += 100;
+            supports[msg.sender] = 0;
         } else {
             points2 += 100;
+            supports[msg.sender] = 1;
         }
 
         // Initialize the amount & the steps
@@ -52,8 +60,19 @@ contract Battle {
         steps[msg.sender] = 1;
     }
 
-    function nextSteps() external {
-        steps[msg.sender]++;
+    function nextSteps(address user) external {
+        require(msg.sender == owner); // Only the owner can update it at the moment
+        require(steps[user] > 0); // Need the user to be register
+        
+        // Update the user steps
+        steps[user]++;
+
+        // Attribute some points to the team
+        if (!supports[msg.sender]) {
+            points1 += 100;
+        } else {
+            points2 += 100;
+        }
     }
 
 }
