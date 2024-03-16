@@ -118,10 +118,13 @@ app.get('/deploy', async (req, res) => {
 // Third: levelComplete -> Airdrop fan tokens to winner
 
 
-app.get('/fan-player-1', async (req, res) => {
+//
+// Get team name
+// 
 
+async function get_team_1(contract_address) {
     let contract = new ethers.Contract(
-        "0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190",
+        contract_address,
         contractInfo.abi,
         provider
     );
@@ -129,15 +132,13 @@ app.get('/fan-player-1', async (req, res) => {
     // Get the team ERC20 address
     const team_1_address = await contract.team1();
     
-    const team_name = await get_team_name_from_address(team_1_address);
+    return await get_team_name_from_address(team_1_address);
+}
 
-    res.send(team_name);
-});
-
-app.get('/fan-player-2', async (req, res) => {
+async function get_team_2(contract_address) {
 
     let contract = new ethers.Contract(
-        "0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190",
+        contract_address,
         contractInfo.abi,
         provider
     );
@@ -145,16 +146,33 @@ app.get('/fan-player-2', async (req, res) => {
     // Get the team ERC20 address
     const team_2_address = await contract.team2();
     
-    const team_name = await get_team_name_from_address(team_2_address);
+    return await get_team_name_from_address(team_2_address);
+}
 
+// TESTING PURPOSE
+app.get('/fan-player-1', async (req, res) => {
+    let team_name = await get_team_1("0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190");
     res.send(team_name);
 });
 
-// app.get('/next', async (req, res) => {
+// TESTING PURPOSE
+app.get('/fan-player-2', async (req, res) => {
+    let team_name = await get_team_2("0x6C97f9A13c658B1eabCC774C20C8ad1d2A6D6190");
+    res.send(team_name);
+});
 
-//     req
+app.get('/fan-player-1/:contract_address', async (req, res) => {
+    let contract_address = req.params['contract_address'];
+    let team_name = await get_team_1(contract_address);
+    res.send(team_name);
+});
 
-// }
+app.get('/fan-player-2/:contract_address', async (req, res) => {
+    let contract_address = req.params['contract_address'];
+    let team_name = await get_team_2(contract_address);
+    res.send(team_name);
+});
+
 
 // Start the server
 app.listen(port, () => {
