@@ -11,6 +11,12 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@types/jest": "^29.5.12",
     "hardhat": "^2.22.1"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ignition": "^0.15.0",
+    "chai": "^5.1.0",
+    "viem": "^2.8.10"
   }
 }
