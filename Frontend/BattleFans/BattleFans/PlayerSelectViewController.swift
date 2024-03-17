@@ -27,9 +27,18 @@ class PlayerSelectViewController: UIViewController {
     }
 
     func loadPlayerSelect() {        
+        
+        for button in [arsenalButton, psgButton, acmButton, fcbButton] {
+            button?.backgroundColor = .white
+            button?.isEnabled = true
+        }
+        
         arsenalButton.setImage(.pfp1, for: .normal)
+        
         psgButton.setImage(.pfp2, for: .normal)
+        
         acmButton.setImage(.pfp3, for: .normal)
+        
         fcbButton.setImage(.pfp4, for: .normal)
     }
     

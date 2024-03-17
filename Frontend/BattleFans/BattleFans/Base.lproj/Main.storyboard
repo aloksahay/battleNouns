@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,6 +56,19 @@
                                             <constraint firstAttribute="width" constant="240" id="rjw-i8-IuY"/>
                                         </constraints>
                                     </view>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="football final" translatesAutoresizingMaskIntoConstraints="NO" id="IyW-Yb-RKf">
+                                        <rect key="frame" x="177" y="117" width="40" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="4th-NR-rWB"/>
+                                            <constraint firstAttribute="width" secondItem="IyW-Yb-RKf" secondAttribute="height" multiplier="1:1" id="CCk-I9-viW"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -92,16 +104,42 @@
                                     <constraint firstItem="I0t-TW-vg9" firstAttribute="top" secondItem="AwJ-A4-JsG" secondAttribute="top" constant="5" id="xkO-39-0a7"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDj-9i-6MI" userLabel="DialogView">
+                                <rect key="frame" x="59" y="292.33333333333331" width="734" height="59.666666666666686"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CII-bM-xym">
+                                        <rect key="frame" x="20" y="20" width="694" height="19.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="CII-bM-xym" firstAttribute="leading" secondItem="iDj-9i-6MI" secondAttribute="leading" constant="20" id="2rH-8s-PZT"/>
+                                    <constraint firstAttribute="bottom" secondItem="CII-bM-xym" secondAttribute="bottom" constant="20" id="YKN-8N-Tn9"/>
+                                    <constraint firstAttribute="trailing" secondItem="CII-bM-xym" secondAttribute="trailing" constant="20" id="Zzn-kI-y0U"/>
+                                    <constraint firstItem="CII-bM-xym" firstAttribute="top" secondItem="iDj-9i-6MI" secondAttribute="top" constant="20" id="rFr-aX-iBF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.52549022440000004" green="0.68627452850000004" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="AwJ-A4-JsG" firstAttribute="leading" secondItem="s4Q-wp-vUG" secondAttribute="trailing" id="0DM-iP-FWX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s4Q-wp-vUG" secondAttribute="trailing" constant="140" id="3AX-lw-LbR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="iDj-9i-6MI" secondAttribute="bottom" constant="20" id="899-NO-UVe"/>
+                            <constraint firstItem="iDj-9i-6MI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CAB-nP-6li"/>
                             <constraint firstItem="AM7-qu-HOQ" firstAttribute="bottom" secondItem="s4Q-wp-vUG" secondAttribute="bottom" id="Gf2-Ou-ftz"/>
                             <constraint firstItem="s4Q-wp-vUG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="M5i-o8-qI1"/>
                             <constraint firstItem="AwJ-A4-JsG" firstAttribute="top" secondItem="s4Q-wp-vUG" secondAttribute="top" id="RJI-an-aFO"/>
                             <constraint firstItem="s4Q-wp-vUG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="akn-4y-f4f"/>
+                            <constraint firstItem="iDj-9i-6MI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="czK-tm-3Ad"/>
                             <constraint firstItem="AM7-qu-HOQ" firstAttribute="top" secondItem="s4Q-wp-vUG" secondAttribute="top" id="dWl-cc-Sa4"/>
                             <constraint firstItem="AwJ-A4-JsG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="50" id="feF-Yu-IYS"/>
                             <constraint firstItem="AM7-qu-HOQ" firstAttribute="leading" secondItem="s4Q-wp-vUG" secondAttribute="leading" id="gBy-eh-uSd"/>
@@ -111,6 +149,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="ballView" destination="IyW-Yb-RKf" id="Btu-jL-Wv0"/>
+                        <outlet property="conversationLabel" destination="CII-bM-xym" id="BYg-pX-lFl"/>
+                        <outlet property="dialogView" destination="iDj-9i-6MI" id="YRj-qZ-b4T"/>
+                        <outlet property="fieldView" destination="AM7-qu-HOQ" id="mXr-gV-KRx"/>
                         <outlet property="leftPlayerImage" destination="tse-bP-ySd" id="mYY-of-nYT"/>
                         <outlet property="leftTeamImage" destination="b5H-Pc-nkL" id="nfx-Ng-gys"/>
                         <outlet property="rightPlayerImage" destination="kQ7-FQ-dCr" id="ESl-Ph-dF1"/>
@@ -140,9 +182,9 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-ac-Cbv">
                                                 <rect key="frame" x="0.0" y="0.0" width="310" height="150"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SY1-78-AnI">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SY1-78-AnI">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" red="0.61647796629999996" green="0.37258398300000001" blue="0.10003454790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="40" maxX="40" maxY="40"/>
                                                         <state key="normal" image="arsenal logo">
@@ -154,7 +196,7 @@
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sPS-mj-BmV">
                                                         <rect key="frame" x="160" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" red="0.61647796629999996" green="0.37258398300000001" blue="0.10003454790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="40" maxX="40" maxY="40"/>
                                                         <state key="normal" image="psg_logo"/>
                                                         <connections>
@@ -166,18 +208,18 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-Ue-ftO">
                                                 <rect key="frame" x="0.0" y="160" width="310" height="150"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-L9-Fui">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LX-L9-Fui">
                                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" red="0.61647796629999996" green="0.37258398300000001" blue="0.10003454790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="40" maxX="40" maxY="40"/>
                                                         <state key="normal" image="AC_Milan"/>
                                                         <connections>
                                                             <action selector="button3Pressed:" destination="FsJ-c1-PCw" eventType="touchUpInside" id="WbC-be-6mz"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvQ-vz-AQk">
+                                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OvQ-vz-AQk">
                                                         <rect key="frame" x="160" y="0.0" width="150" height="150"/>
-                                                        <color key="backgroundColor" red="0.61647796629999996" green="0.37258398300000001" blue="0.10003454790000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="40" minY="40" maxX="40" maxY="40"/>
                                                         <state key="normal" image="fcb"/>
                                                         <connections>
@@ -187,9 +229,10 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="WVv-gp-fFT"/>
                                     <constraint firstAttribute="bottom" secondItem="1bP-og-fAd" secondAttribute="bottom" id="a1d-U6-h2g"/>
@@ -201,7 +244,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1kV-l5-3wE"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.52549022440000004" green="0.68627452850000004" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="jeS-Z1-MT1" firstAttribute="centerY" secondItem="1kV-l5-3wE" secondAttribute="centerY" id="RJ9-6L-9OZ"/>
                             <constraint firstItem="jeS-Z1-MT1" firstAttribute="centerX" secondItem="1kV-l5-3wE" secondAttribute="centerX" id="RiG-Md-2Aw"/>
@@ -223,10 +266,8 @@
         <image name="AC_Milan" width="720" height="1140"/>
         <image name="arsenal logo" width="441" height="507"/>
         <image name="fcb" width="2020" height="2048"/>
+        <image name="football final" width="194" height="195"/>
         <image name="footballpitch" width="525" height="334.33334350585938"/>
         <image name="psg_logo" width="1200" height="1200"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
