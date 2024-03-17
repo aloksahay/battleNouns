@@ -174,6 +174,37 @@ app.get('/fan-player-2/:contract_address', async (req, res) => {
 });
 
 
+
+app.get('/balance/:fan_token/:user_address', async (req, res) => {
+
+    // Example call 
+    // http://localhost:3000/balance/0xa4bf4104ec0109591077Ee5F4a2bFD13dEE1Bdf8/0x2aAbDd5b684B99aa16955cc1f107A7479Bf5512d
+
+    try {
+        // Extract the addresses
+        let fan_token_address = req.params['fan_token'];
+        let user_address = req.params['user_address'];
+        
+
+        let contract = new ethers.Contract(
+            fan_token_address,
+            ERC20_ABI,
+            provider
+        );
+
+        let user_balance = await contract.balanceOf(user_address);
+
+        res.send("" + user_balance);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error when looking at the user balance');
+    }
+    
+});
+
+
+
+
 // Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
