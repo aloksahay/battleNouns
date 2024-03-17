@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var leftTeamImage: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var rightTeamImage: UIImageView!
-        
+    @IBOutlet weak var leftPlayerImage: UIImageView!
+    @IBOutlet weak var rightPlayerImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -33,6 +35,8 @@ class ViewController: UIViewController {
         leftTeamImage.image = ContentManager.teamImage(teamNumber: ContentManager.teamSelect)
         rightTeamImage.image = .fcb
         scoreLabel.text = "0-0"
+        rightPlayerImage.image = .pfpRef
+        leftPlayerImage.image = ContentManager.playerImage(teamNumber: ContentManager.pfpSelect)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

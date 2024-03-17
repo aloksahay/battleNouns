@@ -32,6 +32,9 @@ class ContentManager {
         }
     }
     
+    static func playerImage(teamNumber: Int) -> UIImage {
+        return UIImage.init(named: "pfp"+"\(ContentManager.teamSelect)") ?? UIImage()
+    }
     
     static func fetchAsset(assetURL: URL?, completion: @escaping (UIImage?, Error?) -> Void) {
         guard let url = assetURL else {
