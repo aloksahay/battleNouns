@@ -12,12 +12,26 @@ class ContentManager {
     
     static let nounsApi = "https://noun-api.com/beta/pfp?"
     
-    
     static let arsenalNounAsset = URL(string: "\(ContentManager.nounsApi)" + "head=46&glasses=11&body=5&accessory=53")
     static let lgdNounAsset = URL(string: "\(ContentManager.nounsApi)" + "head=46&glasses=6&body=3&accessory=43")
     static let milanNounAsset = URL(string: "\(ContentManager.nounsApi)" + "head=46&glasses=3&body=8&accessory=13")
     static let barcelonaNounAsset = URL(string: "\(ContentManager.nounsApi)" + "head=46&glasses=2&body=9&accessory=16")
     static let refereeNounAsset = URL(string: "\(ContentManager.nounsApi)" + "head=46&glasses=11&body=26&accessory=58&theme=nounsinblack")
+    
+    static var teamSelect: Int = -1
+    static var pfpSelect: Int = -1
+    
+    static func teamImage(teamNumber: Int) -> UIImage {
+        switch teamNumber {
+        case 1: return UIImage.arsenalLogo
+        case 2: return UIImage.psgLogo
+        case 3: return UIImage.acMilan
+        case 4: return UIImage.fcb
+        default:
+            return UIImage()
+        }
+    }
+    
     
     static func fetchAsset(assetURL: URL?, completion: @escaping (UIImage?, Error?) -> Void) {
         guard let url = assetURL else {
