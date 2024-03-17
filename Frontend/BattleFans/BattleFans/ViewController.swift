@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     var currentStringIndex: Int = 0
     var textTimer: Timer?
     var message: String = ""
+    var gameScore = 0
 
     @IBOutlet weak var dialogView: UIView!
     @IBOutlet weak var conversationLabel: UILabel!
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     func loadTeams() {
         leftTeamImage.image = ContentManager.teamImage(teamNumber: ContentManager.teamSelect)
         rightTeamImage.image = .fcb
-        scoreLabel.text = "0-0"
+        scoreLabel.text = "\(gameScore)-0"
         rightPlayerImage.image = .pfpRef
         leftPlayerImage.image = ContentManager.playerImage(teamNumber: ContentManager.pfpSelect)
         resetFootBall()
@@ -71,7 +72,8 @@ class ViewController: UIViewController {
         self.showConversation(text: "Game on!")
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 5 seconds delay
-            self.showConversation(text: "Find the first clue behind the unicorn")
+            self.showConversation(text: "Find the first clue at the home of the Gunners 🛡️")
+//            self.scoreGoal()
         }
     }
     
