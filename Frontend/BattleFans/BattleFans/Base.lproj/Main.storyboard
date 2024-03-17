@@ -242,18 +242,28 @@
                                     <constraint firstAttribute="trailing" secondItem="1bP-og-fAd" secondAttribute="trailing" id="xXa-6H-olt"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick your side (you need fan tokens to play)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iec-hr-fig">
+                                <rect key="frame" x="613" y="160.66666666666666" width="197" height="71.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1kV-l5-3wE"/>
                         <color key="backgroundColor" red="0.52549022440000004" green="0.68627452850000004" blue="0.26666668059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="iec-hr-fig" firstAttribute="leading" secondItem="jeS-Z1-MT1" secondAttribute="trailing" constant="32" id="17V-yr-xSs"/>
                             <constraint firstItem="jeS-Z1-MT1" firstAttribute="centerY" secondItem="1kV-l5-3wE" secondAttribute="centerY" id="RJ9-6L-9OZ"/>
                             <constraint firstItem="jeS-Z1-MT1" firstAttribute="centerX" secondItem="1kV-l5-3wE" secondAttribute="centerX" id="RiG-Md-2Aw"/>
+                            <constraint firstItem="iec-hr-fig" firstAttribute="centerY" secondItem="jeS-Z1-MT1" secondAttribute="centerY" id="Sbi-1M-TR7"/>
+                            <constraint firstItem="1kV-l5-3wE" firstAttribute="trailing" secondItem="iec-hr-fig" secondAttribute="trailing" constant="42" id="WmW-Re-BeN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="acmButton" destination="7LX-L9-Fui" id="fPt-92-Uxj"/>
                         <outlet property="arsenalButton" destination="SY1-78-AnI" id="8gw-2L-phH"/>
                         <outlet property="fcbButton" destination="OvQ-vz-AQk" id="qFg-Sa-GLF"/>
+                        <outlet property="messageLabel" destination="iec-hr-fig" id="8tj-HA-2qe"/>
                         <outlet property="psgButton" destination="sPS-mj-BmV" id="Kyh-ov-R1R"/>
                     </connections>
                 </viewController>

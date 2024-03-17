@@ -19,6 +19,8 @@ class PlayerSelectViewController: UIViewController {
     @IBOutlet weak var acmButton: UIButton!
     @IBOutlet weak var fcbButton: UIButton!
             
+    @IBOutlet weak var messageLabel: UILabel!
+    
     weak var delegate: ModalDelegate?
     
     override func viewDidLoad() {
@@ -40,6 +42,8 @@ class PlayerSelectViewController: UIViewController {
         acmButton.setImage(.pfp3, for: .normal)
         
         fcbButton.setImage(.pfp4, for: .normal)
+        
+        messageLabel.text = "Pick your Avatar"
     }
     
     @IBAction func button1Pressed(_ sender: Any) {
