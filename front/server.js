@@ -12,7 +12,7 @@ const port = 3000;
 // import { ethers } from 'ethers';
 const { ethers } = require('ethers');
 
-const contractInfo = require("../contract/artifacts/contracts/Battle.sol/Battle.json") 
+const contractInfo = require("./Battle.json") 
 
 const ERC20_ABI = require("./data/erc_20_abi.json");
 
