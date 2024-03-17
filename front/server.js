@@ -6,7 +6,7 @@ const Web3 = require('web3');
 const fs = require('fs');
 
 const app = express();
-const port = 80;
+const port = 3000;
 
 // import ContractFactory from 'ethers';
 // import { ethers } from 'ethers';
