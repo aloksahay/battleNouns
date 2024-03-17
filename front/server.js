@@ -206,6 +206,5 @@ app.get('/balance/:fan_token/:user_address', async (req, res) => {
 
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+app.listen(443)
+app.listen(80)
