@@ -12,57 +12,16 @@ const port = 3000;
 // import { ethers } from 'ethers';
 const { ethers } = require('ethers');
 
-const contractInfo = require("../contract/artifacts/contracts/Battle.sol/Battle.json") 
+const contractInfo = require("./Battle.json") 
 
 const ERC20_ABI = require("./data/erc_20_abi.json");
 
-
 let provider = new ethers.JsonRpcProvider("https://spicy-rpc.chiliz.com/");
 
-// // const factory = new ContractFactory(contractAbi, contractByteCode);
 
-// // // If your contract requires constructor args, you can specify them here
-// // const contract = await factory.deploy(deployArgs);
+const TEST_CONTRACT_ADDRESS = "0xF7c81e84F7e4DF917E8f47009f9c56b2512cF71C";
 
-// // console.log(contract.address);
-// // console.log(contract.deployTransaction);
-
-
-
-// // Connect to the Ethereum node
-// const web3 = new Web3(new Web3.providers.HttpProvider('https://spicy-rpc.chiliz.com/')); 
-
-// // Read the solidity contract
-// const contractFile = fs.readFileSync('../contract/contracts/Battle.sol', 'utf8');
-// const contractSource = contractFile.toString();
-
-// // Compile the contract
-// const contractCompiled = web3.eth.compile.solidity(contractSource);
-
-// // Get the contract ABI and bytecode
-// const contractABI = contractCompiled.Battle.info.abiDefinition;
-// const contractBytecode = '0x' + contractCompiled.Battle.code;
-
-// // Deploy the contract
-// async function deployContract() {
-//     try {
-//         const accounts = await web3.eth.getAccounts();
-//         const deploy = new web3.eth.Contract(contractABI);
-//         const deployedContract = await deploy.deploy({
-//             data: contractBytecode
-//         }).send({
-//             from: accounts[0],
-//             gas: 1500000,
-//             gasPrice: '30000000000'
-//         });
-//         console.log('Contract deployed at address:', deployedContract.options.address);
-//         return deployedContract.options.address;
-//     } catch (error) {
-//         console.error('Error deploying contract:', error);
-//         throw error;
-//     }
-// }
-
+const CONTRACT_OWNER_KEY = process.env.CONTRACT_OWNER_KEY;
 
 async function get_team_name_from_address(team_address) {
         
@@ -86,11 +45,9 @@ app.get('/deploy', async (req, res) => {
 
     try {
 
-        const privateKey = process.env.CONTRACT_OWNER_KEY;
-
         let provider = new ethers.JsonRpcProvider("https://spicy-rpc.chiliz.com/");
 
-        let signer = new ethers.Wallet(privateKey, provider);
+        let signer = new ethers.Wallet(CONTRACT_OWNER_KEY, provider);
 
         const factory = new ethers.ContractFactory(
             contractInfo.abi, 
@@ -203,9 +160,68 @@ app.get('/balance/:fan_token/:user_address', async (req, res) => {
 });
 
 
+app.get('/upgrade/:contract_address/:user_address', async (req, res) => {
+
+    // Example call 
+    // http://localhost:3000/upgrade/0xF7c81e84F7e4DF917E8f47009f9c56b2512cF71C/0x2aAbDd5b684B99aa16955cc1f107A7479Bf5512d
+
+    try {
+        // Extract the addresses
+        let contract_address = req.params['contract_address'];
+        let user_address = req.params['user_address'];
+
+        let signer = new ethers.Wallet(CONTRACT_OWNER_KEY, provider);
+
+        // Get the contract 
+        let contract = new ethers.Contract(
+            contract_address,
+            contractInfo.abi,
+            signer
+        );
+
+        // Go to the next level
+        await contract.nextSteps(user_address);
+
+        res.send("true");
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error when looking at the user balance');
+    }
+    
+});
+
+app.get('/levelComplete/:contract_address/:user_address', async (req, res) => {
+
+    try {
+        // Extract the addresses
+        let contract_address = req.params['contract_address'];
+        let user_address = req.params['user_address'];
+
+        let signer = new ethers.Wallet(CONTRACT_OWNER_KEY, provider);
+
+        // Get the contract 
+        let contract = new ethers.Contract(
+            contract_address,
+            contractInfo.abi,
+            signer
+        );
+
+        // Go to the next level
+        await contract.levelComplete(user_address);
+
+        res.send("true");
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error when looking at the user balance');
+    }
+});
+
+
+
 
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+// app.listen(443)
+// app.listen(80)
+app.listen(3001)
